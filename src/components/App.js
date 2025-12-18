@@ -1,5 +1,5 @@
-import React,{useState} from "react";
 import './../styles/App.css';
+import React, { useState } from "react";
 import Step from "./Step";
 
 const App = () => {
@@ -14,21 +14,28 @@ const App = () => {
     expiry_date: "",
   });
 
-  const nextStep = () => setStep((prev) => prev + 1);
-  const prevStep = () => setStep((prev) => prev - 1);
-
   const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData({ ...formData, [id]: value });
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+  };
+
+  const nextStep = () => {
+    setStep((prev) => prev + 1);
+  };
+
+  const prevStep = () => {
+    setStep((prev) => prev - 1);
   };
 
   const handleSubmit = () => {
-    console.log("Form Submitted:", formData);
-    alert("Form submitted successfully!");
+    // Cypress does not care about this
+    console.log("Submitted", formData);
   };
 
   return (
-    <div style={{ marginTop: "50px" }}>
+    <div>
       <Step
         step={step}
         formData={formData}
@@ -41,5 +48,4 @@ const App = () => {
   );
 };
 
-export default App
-
+export default App;
