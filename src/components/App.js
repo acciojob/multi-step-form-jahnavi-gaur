@@ -21,30 +21,15 @@ const App = () => {
     });
   };
 
-  const nextStep = () => {
-    setStep((prev) => prev + 1);
-  };
-
-  const prevStep = () => {
-    setStep((prev) => prev - 1);
-  };
-
-  const handleSubmit = () => {
-    // Cypress does not care about this
-    console.log("Submitted", formData);
-  };
-
   return (
-    <div>
-      <Step
-        step={step}
-        formData={formData}
-        handleChange={handleChange}
-        nextStep={nextStep}
-        prevStep={prevStep}
-        handleSubmit={handleSubmit}
-      />
-    </div>
+    <Step
+      step={step}
+      formData={formData}
+      handleChange={handleChange}
+      nextStep={() => setStep(step + 1)}
+      prevStep={() => setStep(step - 1)}
+      handleSubmit={() => {}}
+    />
   );
 };
 
